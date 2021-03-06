@@ -7,9 +7,8 @@ from sklearn.preprocessing import LabelEncoder
 class DatasetRepository:
 
     def __init__(self):
-        self.__data = None
-        self.__classes = None
-
+        self.__data: pd.DataFrame = None
+        self.__label_encoder: LabelEncoder = None
 
     def __load(self):
         path = os.path.join(
@@ -23,7 +22,7 @@ class DatasetRepository:
 
         label_encoder = LabelEncoder()
         data.loc[:, "y"] = label_encoder.fit_transform(data["y"])
-        self.__classes = label_encoder.classes_
+        self.__label_encoder = label_encoder
         self.__data = data
 
     def get(self):
@@ -33,6 +32,12 @@ class DatasetRepository:
 
     @property
     def classes(self):
-        if self.__classes is None:
+        if self.__label_encoder is None:
             self.__load()
-        return self.__classes
+        return self.__label_encoder.classes_
+
+    @property
+    def label_encoder(self) -> LabelEncoder:
+        if self.__label_encoder is None:
+            self.__load()
+        return self.__label_encoder

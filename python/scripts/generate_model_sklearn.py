@@ -3,9 +3,10 @@ from sklearn.metrics import f1_score
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 
-from mlops_examples.domain.transformers.onnx_transformer import OnnxTransformer
+from mlops_examples.infrastructure.onnx_repository import OnnxRepository
+from mlops_examples.infrastructure.pickle_repository import PickleRepository
+from mlops_examples.infrastructure.pmml_repository import PmmlRepository
 from mlops_examples.infrastructure.dataset_repository import DatasetRepository
-from mlops_examples.infrastructure.model_repository import ModelRepository
 
 
 def main():
@@ -27,8 +28,9 @@ def main():
 
     print(f"F1: {f1:.3f}")
 
-    onnx_model = OnnxTransformer().transform(pipeline, X)
-    ModelRepository().save(onnx_model, "sklearn_converted_model.onnx")
+    OnnxRepository().put(pipeline, "sklearn_converted_model.onnx", X)
+    PmmlRepository().put(pipeline, "sklearn_converted_model.pmml")
+    PickleRepository().put(pipeline, "sklearn_converted_model.pkl")
 
 
 if __name__ == "__main__":

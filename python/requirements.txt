@@ -1,4 +1,9 @@
+fastapi
 numpy
+onnxruntime==1.7.0
 pandas
+pypmml
 sklearn
-skl2onnx>=1.8.0
+skl2onnx==1.7.0
+sklearn2pmml
+uvicorn

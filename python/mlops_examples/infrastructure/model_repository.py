@@ -1,13 +1,18 @@
-import os
+import abc
+from typing import Optional
+
+import numpy as np
+from sklearn.pipeline import Pipeline
+
+from mlops_examples.domain.model import Model
 
 
-class ModelRepository:
-    def save(self, serialised_model, filename):
-        path = os.path.join(
-            os.path.dirname(__file__), os.pardir, os.pardir, os.pardir,
-            "models", filename
-        )
-        os.makedirs(os.path.dirname(path), exist_ok=True)
-        with open(path, 'wb') as f:
-            f.write(serialised_model)
-        print(f"Saved to {path}")
+class ModelRepository(abc.ABC):
+
+    @abc.abstractmethod
+    def put(self, pipeline: Pipeline, model_name: str, data_subset: Optional[np.ndarray] = None):
+        pass
+
+    @abc.abstractmethod
+    def get(self, model_name: str) -> Model:
+        pass
