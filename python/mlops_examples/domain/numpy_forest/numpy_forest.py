@@ -45,7 +45,7 @@ class NumpyForest(object):
 
         n_features = np.ceil(np.sqrt(dataset.shape[1])).astype(int)
         result = DecisionNode()
-        smallest_gini = 1.1
+        smallest_gini = np.finfo(np.float16).max
         features = self._rng.choice(dataset.shape[1] - 1, size=n_features, replace=False)
         for feature in features:
             for row in dataset:
