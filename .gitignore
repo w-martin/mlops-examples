@@ -3,5 +3,7 @@ data/iris*
 *.swp
 *.pyc
 venv
-models
+*.onnx
+*.pkl
+*.pmml
 
