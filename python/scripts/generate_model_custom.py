@@ -1,8 +1,8 @@
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import f1_score
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 
+from mlops_examples.domain.numpy_forest import NumpyForest
 from mlops_examples.infrastructure.models.onnx_repository import OnnxRepository
 from mlops_examples.infrastructure.models.pickle_repository import PickleRepository
 from mlops_examples.infrastructure.models.pmml_repository import PmmlRepository
@@ -14,7 +14,7 @@ def main():
     training_set = dataset_repository.get()
     train, test = train_test_split(training_set, train_size=0.1)
     pipeline = Pipeline([
-        ("forest", RandomForestClassifier())
+        ("forest", NumpyForest())
     ])
     X = train.drop(columns=["y"]).values
     y = train["y"]

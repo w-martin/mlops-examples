@@ -3,15 +3,15 @@ from typing import List
 import numpy as np
 from sklearn.pipeline import Pipeline
 
-from mlops_examples.domain.model import Model
+from mlops_examples.domain.model_wrappers.model_wrapper import ModelWrapper
 
 
-class SklearnModel(Model):
+class SklearnModelWrapper(ModelWrapper):
 
     def __init__(self):
         self.__pipeline: Pipeline = None
 
-    def using(self, pipeline: Pipeline) -> Model:
+    def using(self, pipeline: Pipeline) -> ModelWrapper:
         self.__pipeline = pipeline
         return self
 

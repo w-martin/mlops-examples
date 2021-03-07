@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 from mlops_examples.domain.input_dto import InputDto
 from mlops_examples.infrastructure.dataset_repository import DatasetRepository
-from mlops_examples.infrastructure.pmml_repository import PmmlRepository
+from mlops_examples.infrastructure.models.pmml_repository import PmmlRepository
 
 app = FastAPI()
 model = PmmlRepository().get("sklearn_converted_model.pmml")

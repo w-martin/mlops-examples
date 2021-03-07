@@ -2,7 +2,7 @@ import abc
 from typing import Any, List
 
 
-class Model(abc.ABC):
+class ModelWrapper(abc.ABC):
 
     @abc.abstractmethod
     def predict(self, row: List[List[float]]) -> List[str]:
@@ -13,5 +13,5 @@ class Model(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def using(self, loaded_model: Any) -> 'Model':
+    def using(self, loaded_model: Any) -> 'ModelWrapper':
         pass

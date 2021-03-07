@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 from mlops_examples.domain.input_dto import InputDto
 from mlops_examples.infrastructure.dataset_repository import DatasetRepository
-from mlops_examples.infrastructure.pickle_repository import PickleRepository
+from mlops_examples.infrastructure.models.pickle_repository import PickleRepository
 
 app = FastAPI()
 model = PickleRepository().get("sklearn_converted_model.pkl")

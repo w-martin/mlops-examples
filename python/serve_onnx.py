@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 from mlops_examples.domain.input_dto import InputDto
 from mlops_examples.infrastructure.dataset_repository import DatasetRepository
-from mlops_examples.infrastructure.onnx_repository import OnnxRepository
+from mlops_examples.infrastructure.models.onnx_repository import OnnxRepository
 
 app = FastAPI()
 model = OnnxRepository().get("sklearn_converted_model.onnx")

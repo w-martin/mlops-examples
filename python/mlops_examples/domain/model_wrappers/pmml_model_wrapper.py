@@ -1,10 +1,10 @@
 import numpy as np
 from typing import List, Any
 
-from mlops_examples.domain.model import Model
+from mlops_examples.domain.model_wrappers.model_wrapper import ModelWrapper
 
 
-class PmmlModel(Model):
+class PmmlModelWrapper(ModelWrapper):
 
     def __init__(self):
         self.__model = None
@@ -19,6 +19,6 @@ class PmmlModel(Model):
         result = list(map(list, result))
         return result
 
-    def using(self, loaded_model: Any) -> 'Model':
+    def using(self, loaded_model: Any) -> 'ModelWrapper':
         self.__model = loaded_model
         return self
