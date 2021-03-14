@@ -6,4 +6,5 @@ venv
 *.onnx
 *.pkl
 *.pmml
+cmake-build-debug
 

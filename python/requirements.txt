@@ -1,4 +1,5 @@
 fastapi
+matplotlib
 numpy
 onnxruntime==1.7.0
 pandas

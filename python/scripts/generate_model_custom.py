@@ -2,7 +2,7 @@ from sklearn.metrics import f1_score
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 
-from mlops_examples.domain.numpy_forest import NumpyForest
+from mlops_examples.domain.numpy_forest.numpy_forest import NumpyForest
 from mlops_examples.infrastructure.models.onnx_repository import OnnxRepository
 from mlops_examples.infrastructure.models.pickle_repository import PickleRepository
 from mlops_examples.infrastructure.models.pmml_repository import PmmlRepository
