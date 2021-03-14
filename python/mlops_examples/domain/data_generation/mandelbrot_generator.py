@@ -38,7 +38,7 @@ class MandelbrotGenerator(DataGenerator):
             unset = result == 0
             if unset.sum() < 1:
                 break
-            z[unset] = np.square(z[unset]) + c[unset]
+            z = np.square(z) + c
             mask = unset & (z.real * z.imag > self._threshold)
             result[mask] = i
             i += 1

@@ -3,22 +3,26 @@
 #include "mandelbrot_generator.h"
 #include <iostream>
 
+
 ArrayXi MandelbrotGenerator::computeMandelbrot(ArrayXcf c) {
-    ArrayXi result = ArrayXi::Constant(c.size(), max);
+    ArrayXi result = ArrayXi::Zero(c.size());
     ArrayXcf z(c.size());
     z << c;
-    short i = 1;
+    unsigned short i = 1;
+    Array<bool, Dynamic, 1> unset(c.size());
+    Array<bool, Dynamic, 1> mask(c.size());
 
     while (i < max) {
-        auto unset = result == max;
+        unset = result == 0;
         if (unset.sum() == 0) {
             break;
         }
         z = z.square() + c;
-        auto mask = ((z.real() * z.imag()) > threshold) && unset;
-        result = mask.select(i, result);
+        mask = unset && ((z.real() * z.imag()) > threshold);
+        result += mask.cast<int>() * i;
         i++;
     }
+    result += (1 - result.cast<bool>().cast<int>()) * max;
     return result;
 }
 

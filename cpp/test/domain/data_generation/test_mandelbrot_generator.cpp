@@ -8,6 +8,11 @@ namespace {
 
 
     TEST(MandelbrotGeneratorTest, GetSmall) {
+        cout << "eigen world" << EIGEN_WORLD_VERSION << endl;
+        cout << "eigen major" << EIGEN_MAJOR_VERSION << endl;
+        cout << "eigen minor" << EIGEN_MINOR_VERSION << endl;
+        cout << "eigen threading" << Eigen::nbThreads() << endl;
+
         auto m = MandelbrotGenerator();
         auto timeBefore = chrono::high_resolution_clock::now();
         auto result = m.get(3);
@@ -27,9 +32,9 @@ namespace {
 
         timeStream.str(std::string());
         timeBefore = chrono::high_resolution_clock::now();
-        m.withMax(255)->get(5000);
+        m.withMax(255)->get(5000000);
         timeStream << std::fixed << std::setprecision(5) << chrono::duration_cast<chrono::nanoseconds>(
                 chrono::high_resolution_clock::now() - timeBefore).count() / 1e9;
-        cout << "mandelbrot rows=5000 max=255 took " << timeStream.str() << "s" << endl;
+        cout << "mandelbrot rows=5000000 max=255 took " << timeStream.str() << "s" << endl;
     }
 }
