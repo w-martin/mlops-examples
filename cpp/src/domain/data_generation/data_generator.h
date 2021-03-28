@@ -5,6 +5,7 @@
 #ifndef MLOPSEXAMPLES_DATA_GENERATOR_H
 #define MLOPSEXAMPLES_DATA_GENERATOR_H
 
+#define EIGEN_USE_MKL_ALL
 #include <Eigen/Dense>
 
 using namespace Eigen;

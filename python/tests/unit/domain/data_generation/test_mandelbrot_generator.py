@@ -20,4 +20,4 @@ class TestMandelbrotGenerator(TestCase):
         with Timer("mandelbrot rows=5000 max=25"):
             result = MandelbrotGenerator().get(5000)
         with Timer("mandelbrot rows=500000 max=255"):
-            result = MandelbrotGenerator().with_max(255).get(500000)
+            result = MandelbrotGenerator().with_max(255).get(5000000)

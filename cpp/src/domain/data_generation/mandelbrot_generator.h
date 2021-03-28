@@ -13,7 +13,7 @@ public:
     ArrayXXf get(int nRows) override;
 
 protected:
-    ArrayXi computeMandelbrot(ArrayXcf c);
+    ArrayXi computeMandelbrot(const ArrayXcf &c, const unsigned short &max, const unsigned short &threshold);
 };
 
 
